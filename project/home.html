@@ -1,0 +1,127 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://kit.fontawesome.com/f72295334f.js" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <header class="header">
+        <h1>Music Gallary</h1>
+    </header>
+    <nav class="navbar">
+        <ul>
+            <li>Home</li>
+            <li>About</li>
+        </ul>
+    </nav>
+    <img class="logo" src="image/logo.jpg" alt="">
+
+
+    <div class="contener">
+        
+        
+        <h1>hello</h1>
+    </div>
+
+
+    <div class="bottom">
+        <audio src="music/music1.mp3"></audio>
+        <input type="range" name="range" id="myProgressBar" min="0" value="0" max="100">
+        <div class="icon">
+        <i class="fas fa-2x fa-backward" id="prev" title="Previous"></i>
+        <i class="fas fa-2x fa-play-circle main button" id="play" title="Play"></i>
+        <i class="fas fa-2x fa-forward" id="next" title="Next"></i>
+      
+
+        </div>
+    </div>
+
+
+    <script>
+        // let audioElement = new Audio('.mp3');
+        const music = document.querySelector("audio");
+        const play = document.getElementById("play");
+        const prev = document.getElementById("prev");
+        const next = document.getElementById("next");
+
+
+
+        const songs =[
+            {
+                name:"music1",
+
+            },
+            {
+                name:"music2",
+
+            },
+            {
+                name:"music3",
+            }
+        ];
+        let isPlaying = false;
+        const playMusic = () => {
+             isPlaying = true;
+            music.play();
+            play.classList.replace("fa-play","fa-pause");
+        };
+        
+       const pauseMusic = () => {
+             isPlaying = false;
+            music.pause();
+            play.classList.replace("fa-pause" ,"fa-play");
+        };
+
+
+        play.addEventListener("click",() =>{
+            if(isPlaying){
+                pauseMusic();
+            }
+            else{
+                playMusic();
+            }
+        });
+
+        const loadSong = (songs) => {
+            music.src = "music/" + songs.name +".mp3";
+        };
+
+        songIndex = 0;
+        // loadSong(sings[2]);
+
+        const nextSong = () => {
+            songIndex = (songIndex + 1)% songs.length;
+
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+
+
+        const prevSong = () => {
+            songIndex = (songIndex - 1 + songs.length)% songs.length;
+
+            loadSong(songs[songIndex]);
+            playMusic();
+        };
+
+        next.addEventListener("click",nextSong);
+        prev.addEventListener("click",prevSong);
+
+
+        loadSong.addEventListener('timeupdate',() =>{
+        progress = parseInt((loadSong.currentTime/loadSong.duration)*100);
+        myProgressBar.value = progress;
+    })
+
+    myProgressBar.loadSong('change',()=>{
+        loadSong.currentTime = myProgressBar.value * loadSong.duration/100;
+    })
+
+        </script>
+</body>
+
+</html>

@@ -1,0 +1,67 @@
+@import url('https://fonts.googleapis.com/css2?family=Alfa+Slab+One&family=Lobster&display=swap');
+*{
+    /* font-family: 'Alfa Slab One', cursive; */
+    margin: 0;
+    padding: 0;
+}
+.header{
+    background-color: crimson;
+    text-align: center;
+    height: 50px;
+    border-bottom:  12px solid black;
+    
+}
+.navbar{
+    padding-left:100px ;
+    background-color: #55f055;
+    line-height: 50px;
+}
+
+.navbar li{
+font-family: 'Lobster', cursive;
+list-style-type: none;
+margin-left: 30px;
+
+
+}
+.navbar ul{
+  display: flex; 
+}
+
+.logo{
+    height: 110px;
+    width: 110px;
+    border-radius: 60px;
+    position: absolute;
+    top: 1px;
+
+}
+.contener{
+    min-height: 75vh;
+    background-color: rgb(235, 232, 227);
+    color: black;
+}
+
+.bottom{
+    position: sticky;
+    height: 60px;
+    background-color: crimson;
+    color: black;
+    bottom: 0;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    
+}
+
+.icon{
+    margin-top: 14px ;
+}
+
+.icon i{
+    cursor: pointer;
+}
+#myProgressBar{
+    width: 100vh;
+}
